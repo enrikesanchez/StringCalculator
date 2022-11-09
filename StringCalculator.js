@@ -17,6 +17,11 @@ let StringCalculator = class {
 
             array.forEach(element => {
                 const number = parseInt(element);
+
+                if (number < 0) {
+                    throw new Error('negatives not allowed ' + number);
+                }
+
                 result += number;
             });
 

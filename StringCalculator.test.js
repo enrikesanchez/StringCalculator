@@ -79,3 +79,13 @@ test('Given "//;\\n1;2" When sum Then 3', () => {
     expect(actualOutput).toBe(expectedOutput);
 });
 
+test('Given "-1,2" When sum Then Exception "negatives not allowed"', () => {
+    // GIVEN
+    const calculator = new StringCalculator();
+    const input = "-11,2";
+
+    // WHEN THEN
+    const expectedMessage = "negatives not allowed -1";
+    expect(() => calculator.sum(input)).toThrow(expectedMessage);
+});
+
