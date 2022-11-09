@@ -15,15 +15,31 @@ let StringCalculator = class {
             const array = modifiedList.split(delimiter);
             let result = 0;
 
+            const negatives = [];
+
             array.forEach(element => {
                 const number = parseInt(element);
 
                 if (number < 0) {
-                    throw new Error('negatives not allowed ' + number);
+                    negatives.push(number);
                 }
 
                 result += number;
             });
+
+            if (negatives.length > 0) {
+                let negativesList = "";
+
+                negatives.forEach(negative => {
+                    negativesList += negative + ",";
+                });
+
+                if (negativesList.length > 0) {
+                    negativesList = negativesList.substring(0, negativesList.length - 1);
+                }
+
+                throw new Error('negatives not allowed ' + negativesList);
+            }
 
             return result;
         }
