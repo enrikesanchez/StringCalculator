@@ -52,3 +52,16 @@ test('Given "1,2,3" When sum Then 6', () => {
     expect(actualOutput).toBe(expectedOutput);
 });
 
+test('Given "1\\n2,3" When sum Then 6', () => {
+    // GIVEN
+    const calculator = new StringCalculator();
+    const input = "1\n2,3";
+
+    // WHEN
+    const actualOutput = calculator.sum(input);
+
+    //THEN
+    const expectedOutput = 6;
+    expect(actualOutput).toBe(expectedOutput);
+});
+
