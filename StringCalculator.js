@@ -3,8 +3,16 @@ let StringCalculator = class {
         if (list.length == 0) {
             return 0;
         } else {
-            const modifiedList = list.replace(/\n/, ",");
-            const array = modifiedList.split(",");
+            let delimiter = ",";
+            let cleanedList = list;
+
+            if (list.startsWith("//")) {
+                delimiter = list.substring(2, 3);
+                cleanedList = list.substring(4);
+            }
+            
+            const modifiedList = cleanedList.replace(/\n/, delimiter);
+            const array = modifiedList.split(delimiter);
             let result = 0;
 
             array.forEach(element => {
